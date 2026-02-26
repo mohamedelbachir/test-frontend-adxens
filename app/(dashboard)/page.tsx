@@ -1,11 +1,31 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { Wallet, EyeOff, HelpCircle, Bell, ChevronDown,Receipt,ArrowDownLeft,CreditCard,ArrowUpRight } from "lucide-react";
+import {
+  Wallet,
+  EyeOff,
+  HelpCircle,
+  Bell,
+  ChevronDown,
+  Receipt,
+  ArrowDownLeft,
+  CreditCard,
+  ArrowUpRight,
+} from "lucide-react";
 import { BalanceCard } from "@/components/balancecard";
-import {MetricCard} from "@/components/stat-card";
-import {SpendingChart} from "@/components/spending-card";
+import { MetricCard } from "@/components/stat-card";
+import { OrganizationSpendingChart } from "@/components/organization-spending-chart";
+import data from "@/data/datas.json";
+import { computeMetrics } from "@/utils";
 export default function Page() {
+  const metrics = computeMetrics(data);
+
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -51,8 +71,6 @@ export default function Page() {
           </div>
         </header>
         <main className="flex-1 overflow-y-auto bg-white p-8">
-          
-          {/* Top Actions Row */}
           <div className="mb-8 flex items-center justify-between">
             <div className="flex gap-8 border-b border-gray-100 pb-px">
               <button className="border-b-2 border-gray-900 pb-4 text-sm font-medium text-gray-900">
@@ -65,7 +83,7 @@ export default function Page() {
                 Team wallets
               </button>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <div className="flex rounded-lg border border-gray-200 bg-white p-1">
                 <button className="rounded-md bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600">
@@ -86,7 +104,6 @@ export default function Page() {
 
           {/* Grid Layout */}
           <div className="grid grid-cols-12 gap-6">
-            
             {/* Left Column: Balance Card */}
             <div className="col-span-12 lg:col-span-5">
               <BalanceCard />
@@ -122,7 +139,12 @@ export default function Page() {
 
             {/* Bottom Row: Chart */}
             <div className="col-span-12">
-              <SpendingChart />
+              <OrganizationSpendingChart
+                data={metrics.chartData}
+                total={29342}
+                change={91}
+                previousTotal={20100.78}
+              />
             </div>
           </div>
         </main>

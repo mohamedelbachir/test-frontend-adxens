@@ -18,7 +18,7 @@ type Data = {
 };
 
 type Props = {
-  data: Data[];
+  data: any[];
   total: number;
   change: number;
   previousTotal: number;

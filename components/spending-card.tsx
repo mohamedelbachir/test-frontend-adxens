@@ -9,7 +9,7 @@ import {
   Cell,
 } from "recharts";
 import { format, parseISO, startOfDay, eachDayOfInterval } from "date-fns";
-import { mockData } from "@/data/data.json";
+import mockData from "";
 import { ChevronDown } from "lucide-react";
 
 // Helper to aggregate data
