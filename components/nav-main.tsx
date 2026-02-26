@@ -35,7 +35,18 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      {/* <SidebarGroupLabel>Platform</SidebarGroupLabel> */}
+      {/*add search bar*/}
+      <div className="mb-4 flex items-center gap-2 rounded-md border border-input bg-muted px-3 py-1">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+        />
+        <div className="text-lg text-muted-foreground bg-white size-8 p-2 border border-border">
+          /
+        </div>
+      </div>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
