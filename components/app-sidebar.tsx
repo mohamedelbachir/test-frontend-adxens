@@ -1,18 +1,6 @@
 "use client";
 
 import * as React from "react";
-import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
@@ -25,36 +13,47 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-
+import Image from "next/image";
+import {
+  TerminalSquareIcon,
+  BotIcon,
+  BookOpen,
+  Settings2Icon,
+  FrameIcon,
+  PieChartIcon,
+  MapIcon,
+  ChevronsUpDownIcon,
+  ChevronRightIcon,
+} from "lucide-react";
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Sort UI",
+    email: "",
+    avatar: "/logo.png",
   },
   teams: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      name: "Sort UI",
+      plan: "",
+      logo: <Image src="/logo.png" alt="Acme Inc" width={24} height={24} />,
     },
     {
       name: "Acme Corp.",
-      logo: AudioWaveform,
       plan: "Startup",
+      logo: <></>,
     },
     {
       name: "Evil Corp.",
-      logo: Command,
       plan: "Free",
+      logo: <></>,
     },
   ],
   navMain: [
     {
       title: "Playground",
       url: "#",
-      icon: SquareTerminal,
+      icon: <TerminalSquareIcon />,
       isActive: true,
       items: [
         {
@@ -74,7 +73,7 @@ const data = {
     {
       title: "Models",
       url: "#",
-      icon: Bot,
+      icon: <BotIcon />,
       items: [
         {
           title: "Genesis",
@@ -93,7 +92,7 @@ const data = {
     {
       title: "Documentation",
       url: "#",
-      icon: BookOpen,
+      icon: <BookOpen />,
       items: [
         {
           title: "Introduction",
@@ -116,7 +115,7 @@ const data = {
     {
       title: "Settings",
       url: "#",
-      icon: Settings2,
+      icon: <Settings2Icon />,
       items: [
         {
           title: "General",
@@ -141,24 +140,24 @@ const data = {
     {
       name: "Design Engineering",
       url: "#",
-      icon: Frame,
+      icon: <FrameIcon />,
     },
     {
       name: "Sales & Marketing",
       url: "#",
-      icon: PieChart,
+      icon: <PieChartIcon />,
     },
     {
       name: "Travel",
       url: "#",
-      icon: Map,
+      icon: <MapIcon />,
     },
   ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" variant="inset">
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
