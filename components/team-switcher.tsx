@@ -42,7 +42,7 @@ export function TeamSwitcher({
             render={
               <SidebarMenuButton
                 size="lg"
-                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground "
               />
             }
           >
@@ -50,7 +50,7 @@ export function TeamSwitcher({
               size="icon-sm"
               render={<span />}
               nativeButton={false}
-              className="size-8"
+              className="size-8 bg-none"
             >
               {activeTeam.logo}
             </Button>
