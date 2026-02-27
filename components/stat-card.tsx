@@ -29,11 +29,17 @@ export function MetricCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        delay: index * 0.15 + 0.3,
+      }}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className={cn(
-        "flex flex-col justify-between rounded-2xl bg-accent/40 p-6 ",
+        "flex flex-col justify-between rounded-2xl bg-accent/40 p-6 shadow-sm hover:shadow-md transition-shadow",
         className,
       )}
     >

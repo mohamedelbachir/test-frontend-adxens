@@ -44,7 +44,7 @@ export function TeamSwitcher({
             render={<SidebarMenuButton size="lg" className="bg-accent " />}
           >
             <div className="w-full flex items-center justify-between">
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
                 <div className="size-8 bg-black flex items-center justify-center rounded-sm">
                   {activeTeam.logo}
                 </div>

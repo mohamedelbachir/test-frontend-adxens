@@ -23,14 +23,24 @@ const containerVariants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
 };
 
 function DashbordContent() {
@@ -41,10 +51,10 @@ function DashbordContent() {
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
       >
         <Button
-          className={"fixed bottom-10 z-30 right-5 p-4 shadow bg-black"}
+          className={"fixed bottom-10 z-30 right-5 p-4 shadow bg-black hover:scale-110 transition-transform"}
           size={"icon-lg"}
         >
           <Message2 className="size-6 " variant="Bold" />
@@ -57,22 +67,21 @@ function DashbordContent() {
         animate="show"
         className="space-y-6"
       >
-        <motion.div
-          variants={itemVariants}
-          className="w-full flex flex-col sm:flex-row item-center justify-between"
-        >
-          <div>
+        <div className="w-full flex flex-col sm:flex-row item-center justify-between">
+          <motion.div variants={itemVariants}>
             <h1 className="block sm:hidden sm:text-2xl font-semibold text-gray-900">
               Organization Balance
             </h1>
             <p className="text-sm text-gray-500">
               Manage your organization funds here.
             </p>
-          </div>
-          <ButtonPrimary className="hidden sm:block">
-            Allocate Funds
-          </ButtonPrimary>
-        </motion.div>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <ButtonPrimary className="hidden sm:block">
+              Allocate Funds
+            </ButtonPrimary>
+          </motion.div>
+        </div>
 
         <motion.div
           variants={itemVariants}
