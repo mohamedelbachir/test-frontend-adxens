@@ -37,9 +37,9 @@ export function MetricCard({
         damping: 15,
         delay: index * 0.15 + 0.3,
       }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      //whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className={cn(
-        "flex flex-col justify-between rounded-2xl bg-accent/40 p-6 shadow-sm hover:shadow-md transition-shadow",
+        "flex flex-col justify-between rounded-2xl bg-accent/40 p-6",
         className,
       )}
     >
