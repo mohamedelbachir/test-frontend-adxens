@@ -5,7 +5,7 @@ import { MetricCard } from "@/components/stat-card";
 import { StackedOrganizationChart } from "@/components/organization-spending-chart";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 import data from "@/data/datas.json";
 import { computeMetrics } from "@/utils";
@@ -18,7 +18,7 @@ import {
 } from "iconsax-reactjs";
 import ButtonPrimary from "@/components/Button";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -29,7 +29,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   show: {
     opacity: 1,
@@ -51,7 +51,7 @@ function DashbordContent() {
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
+        transition={{ type: "spring" as const, stiffness: 260, damping: 20, delay: 1 }}
       >
         <Button
           className={"fixed bottom-10 z-30 right-5 p-4 shadow bg-black hover:scale-110 transition-transform"}

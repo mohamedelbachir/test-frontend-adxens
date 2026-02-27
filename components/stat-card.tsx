@@ -32,7 +32,7 @@ export function MetricCard({
       initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
         delay: index * 0.15 + 0.3,
