@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,12 +13,15 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import {
-  TerminalSquareIcon,
-  BotIcon,
-  BookOpen,
-  Settings2Icon,
-} from "lucide-react";
-import { Home2 } from "iconsax-reactjs";
+  Profile2User,
+  DiscountShape,
+  EmptyWallet,
+  Home2,
+  CardTick,
+  Setting2,
+} from "iconsax-reactjs";
+import Footer from "./footer-sidebar";
+
 // This is sample data.
 const data = {
   user: {
@@ -55,7 +57,8 @@ const data = {
     {
       title: "Ad accounts",
       url: "#",
-      icon: <BotIcon />,
+      icon: <CardTick />,
+      isActive: false,
       items: [
         {
           title: "Genesis",
@@ -73,12 +76,13 @@ const data = {
     },
     {
       title: "Wallets",
-      url: "#",
-      icon: <BookOpen />,
+      url: "/",
+      icon: <EmptyWallet className="text-primary size-8" />,
+      isActive: true,
       items: [
         {
           title: "Organisation Balance",
-          url: "#",
+          url: "/",
         },
         {
           title: "Personnal balance",
@@ -87,27 +91,16 @@ const data = {
       ],
     },
     {
+      title: "Teams",
+      url: "#",
+      icon: <Profile2User />,
+      items: [],
+    },
+    {
       title: "Affiliate Programs",
       url: "#",
-      icon: <Settings2Icon />,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      icon: <DiscountShape />,
+      items: [],
     },
   ],
 };
@@ -122,9 +115,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <Button variant="outline" size="sm" className="w-full left">
-          Settings
-        </Button>
+        <Footer />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

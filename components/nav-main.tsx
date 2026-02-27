@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight, type LucideIcon } from "lucide-react";
+import { ChevronRight, InfoIcon, type LucideIcon } from "lucide-react";
 
 import {
   Collapsible,
@@ -16,8 +16,16 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "./ui/input-group";
+import clsx from "clsx";
 
 export function NavMain({
   items,
@@ -33,21 +41,26 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const { state } = useSidebar();
+
   return (
     <SidebarGroup>
       {/* <SidebarGroupLabel>Platform</SidebarGroupLabel> */}
       {/*add search bar*/}
-      <div className="mb-4 flex items-center gap-2 rounded-md border border-input bg-muted px-3 py-1">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
-        />
-        <div className="text-lg text-muted-foreground bg-white size-8 p-2 border border-border">
+      <InputGroup
+        className={clsx("!rounded-sm", {
+          hidden: state === "collapsed",
+        })}
+      >
+        <InputGroupInput id="input-group-url" placeholder="search" />
+        <InputGroupAddon
+          align="inline-end"
+          className="p-2 size-3 border border-border mr-2"
+        >
           /
-        </div>
-      </div>
-      <SidebarMenu>
+        </InputGroupAddon>
+      </InputGroup>
+      <SidebarMenu className="mt-3">
         {items.map((item) => (
           <Collapsible
             key={item.title}

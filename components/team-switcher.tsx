@@ -17,6 +17,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import clsx from "clsx";
 
 export function TeamSwitcher({
   teams,
@@ -27,7 +28,7 @@ export function TeamSwitcher({
     plan: string;
   }[];
 }) {
-  const { isMobile } = useSidebar();
+  const { state } = useSidebar();
   const [activeTeam, setActiveTeam] = React.useState(teams[0]);
 
   if (!activeTeam) {
@@ -39,24 +40,18 @@ export function TeamSwitcher({
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground "
-              />
-            }
+            render={<SidebarMenuButton size="lg" className="bg-accent " />}
           >
-            <Button
-              size="icon-sm"
-              render={<span />}
-              nativeButton={false}
-              className="size-8 bg-none"
-            >
+            <div className="size-8 bg-black flex items-center justify-center rounded-sm">
               {activeTeam.logo}
-            </Button>
-            <div className="grid flex-1 text-left text-sm leading-tight">
+            </div>
+            <div
+              className={clsx("grid flex-1 text-left text-sm leading-tight", {
+                hidden: state === "collapsed",
+              })}
+            >
               <span className="truncate font-medium">{activeTeam.name}</span>
-              <span className="truncate text-xs">{activeTeam.plan}</span>
+              {/* <span className="truncate text-xs">{activeTeam.plan}</span> */}
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
