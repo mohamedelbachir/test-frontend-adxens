@@ -36,7 +36,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed (v18+ recommended).
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd sample-nextjs-app-shadcn
+   cd test-frontend-adxens
    ```
 
 2. Install dependencies:
