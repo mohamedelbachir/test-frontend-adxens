@@ -4,7 +4,15 @@ import { Button } from "@/components/ui/button";
 import ChartMini from "@/assets/chart-mini.png";
 import Image from "next/image";
 import ButtonPrimary from "./Button";
+import { AnimatedNumber } from "./animated-number";
+
 export function BalanceCard() {
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+
   return (
     <div className="relative h-full overflow-hidden rounded-4xl bg-[#0F172A] p-4 text-white bg-[url('/bg-card.png')] bg-no-repeat bg-cover">
       {/* Background Gradient/Effect */}
@@ -28,7 +36,9 @@ export function BalanceCard() {
             </p>
             <div className="flex items-center justify-between">
               <div className="mt-1 flex items-center gap-3">
-                <h2 className="text-3xl font-bold tracking-tight">$2,405.50</h2>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  <AnimatedNumber value={2405.5} format={formatCurrency} />
+                </h2>
                 <EyeSlash className="h-5 w-5 text-gray-400" />
               </div>
               <Image src={ChartMini} alt="chart" className="w-32" />
