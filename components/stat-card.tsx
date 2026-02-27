@@ -39,7 +39,7 @@ export function MetricCard({
       }}
       //whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className={cn(
-        "flex flex-col justify-between rounded-2xl bg-accent/40 p-6",
+        "flex flex-col justify-between rounded-2xl bg-accent/60 p-6",
         className,
       )}
     >
