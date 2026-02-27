@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { BalanceCard } from "@/components/balancecard";
 import { MetricCard } from "@/components/stat-card";
