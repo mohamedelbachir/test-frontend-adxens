@@ -50,7 +50,7 @@ export function TeamSwitcher({
                 </div>
                 <div
                   className={clsx(
-                    "grid flex-1 text-left text-sm leading-tight",
+                    "text-sm h-fit leading-tight",
                     {
                       hidden: state === "collapsed",
                     },
