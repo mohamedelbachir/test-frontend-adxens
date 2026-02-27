@@ -7,8 +7,15 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 import data from "@/data/datas.json";
 import { computeMetrics } from "@/utils";
-import { CardCoin, MoneySend, Receipt2, MoneyRecive } from "iconsax-reactjs";
+import {
+  CardCoin,
+  MoneySend,
+  Receipt2,
+  MoneyRecive,
+  Message2,
+} from "iconsax-reactjs";
 import ButtonPrimary from "@/components/Button";
+
 function DashbordContent() {
   const metrics = computeMetrics(data);
 
@@ -18,7 +25,13 @@ function DashbordContent() {
       currency: "USD",
     }).format(value);
   return (
-    <main className="flex-1 container mx-auto overflow-y-auto bg-white p-4 pt-4 ">
+    <main className="flex-1 relative container mx-auto overflow-y-auto bg-white p-4 pt-4 ">
+      <Button
+        className={"fixed bottom-10 z-30 right-5 p-4 shadow bg-black"}
+        size={"icon-lg"}
+      >
+        <Message2 className="size-6 " variant="Bold" />
+      </Button>
       <div className="w-full flex flex-col sm:flex-row item-center justify-between">
         <h1 className="block sm:hidden sm:text-2xl font-semibold text-gray-900">
           Organization Balance

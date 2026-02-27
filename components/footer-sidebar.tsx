@@ -21,7 +21,7 @@ export default function Footer() {
           </CardDescription>
         </CardHeader>
         <CardFooter className="!p-0">
-          <Button variant={"outline"} className={"w-full"}>
+          <Button variant={"outline"} className={"w-full rounded-md"}>
             Upgrade
           </Button>
         </CardFooter>
