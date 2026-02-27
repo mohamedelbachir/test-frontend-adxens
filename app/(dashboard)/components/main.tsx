@@ -8,6 +8,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import data from "@/data/datas.json";
 import { computeMetrics } from "@/utils";
 import { CardCoin, MoneySend, Receipt2, MoneyRecive } from "iconsax-reactjs";
+import ButtonPrimary from "@/components/Button";
 function DashbordContent() {
   const metrics = computeMetrics(data);
 
@@ -25,7 +26,9 @@ function DashbordContent() {
         <p className="text-sm text-gray-500">
           Manage your organization funds here.
         </p>
-        <Button className="hidden sm:block !rounded-md">Allocate Funds</Button>
+        <ButtonPrimary className="hidden sm:block">
+          Allocate Funds
+        </ButtonPrimary>
       </div>
       <div className="my-3 flex items-center justify-between">
         <Tabs defaultValue="overview">
@@ -83,19 +86,33 @@ function DashbordContent() {
             title="Total allocated"
             amount={formatCurrency(metrics.totalAllocated)}
             period="Last 30 days"
-            icon={<CardCoin size="32" color="#FF8A65" variant="TwoTone" />}
+            icon={
+              <CardCoin size="32" className="text-gray-500" variant="TwoTone" />
+            }
           />
           <MetricCard
             title="Pending deposit"
             amount={formatCurrency(metrics.pendingDeposit)}
             period="Last 30 days"
-            icon={<MoneySend size="32" color="#FF8A65" variant="TwoTone" />}
+            icon={
+              <MoneySend
+                size="32"
+                className="text-gray-500"
+                variant="TwoTone"
+              />
+            }
           />
           <MetricCard
             title="Pending withdrawal"
             amount={formatCurrency(metrics.pendingWithdrawal)}
             period="Last 30 days"
-            icon={<MoneyRecive size="32" color="#FF8A65" variant="TwoTone" />}
+            icon={
+              <MoneyRecive
+                size="32"
+                className="text-gray-500"
+                variant="TwoTone"
+              />
+            }
           />
         </div>
         <div className="col-span-12">

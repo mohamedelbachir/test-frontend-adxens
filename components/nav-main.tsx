@@ -1,6 +1,11 @@
 "use client";
 
-import { ChevronRight, InfoIcon, type LucideIcon } from "lucide-react";
+import {
+  ChevronDownIcon,
+  ChevronRight,
+  InfoIcon,
+  type LucideIcon,
+} from "lucide-react";
 
 import {
   Collapsible,
@@ -11,6 +16,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
@@ -38,6 +44,7 @@ export function NavMain({
     items?: {
       title: string;
       url: string;
+      isActive?: boolean;
     }[];
   }[];
 }) {
@@ -71,17 +78,35 @@ export function NavMain({
             <SidebarMenuButton
               tooltip={item.title}
               render={<CollapsibleTrigger />}
+              className={clsx({
+                " text-primary": item.isActive,
+              })}
             >
               {item.icon}
               <span>{item.title}</span>
             </SidebarMenuButton>
+            <SidebarMenuAction>
+              {item.items && item.items?.length > 0 && (
+                <ChevronDownIcon className="ml-auto group-data-panel-open/button:rotate-180" />
+              )}
+            </SidebarMenuAction>
             <CollapsibleContent>
               <SidebarMenuSub>
                 {item.items?.map((subItem) => (
                   <SidebarMenuSubItem key={subItem.title}>
-                    <SidebarMenuSubButton render={<a href={subItem.url} />}>
+                    <SidebarMenuSubButton
+                      className={clsx({
+                        "bg-primary/10 text-primary": subItem.isActive,
+                      })}
+                      render={<a href={subItem.url} />}
+                    >
                       {subItem.title}
                     </SidebarMenuSubButton>
+                    {subItem.isActive && (
+                      <SidebarMenuAction className="text-primary">
+                        <ChevronRight />
+                      </SidebarMenuAction>
+                    )}
                   </SidebarMenuSubItem>
                 ))}
               </SidebarMenuSub>

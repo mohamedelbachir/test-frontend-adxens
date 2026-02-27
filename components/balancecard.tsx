@@ -3,6 +3,7 @@ import { EyeSlash, Strongbox } from "iconsax-reactjs";
 import { Button } from "@/components/ui/button";
 import ChartMini from "@/assets/chart-mini.png";
 import Image from "next/image";
+import ButtonPrimary from "./Button";
 export function BalanceCard() {
   return (
     <div className="relative h-full overflow-hidden rounded-4xl bg-[#0F172A] p-4 text-white bg-[url('/bg-card.png')] bg-no-repeat bg-cover">
@@ -36,8 +37,13 @@ export function BalanceCard() {
         </div>
 
         <div className="mt-4 flex gap-3">
-          <Button className="flex-1 !rounded-md">Deposit Funds</Button>
-          <Button className="flex-1 !rounded-md" variant={"secondary"}>
+          <ButtonPrimary className="flex-1">Deposit Funds</ButtonPrimary>
+
+          {/* <Button className="flex-1 !rounded-md !bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.25),transparent_70%)]"></Button> */}
+          <Button
+            className="flex-1 h-full !rounded-md bg-white hover:bg-white"
+            variant={"secondary"}
+          >
             Withdraw
           </Button>
         </div>

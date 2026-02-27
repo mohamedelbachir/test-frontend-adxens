@@ -51,7 +51,6 @@ const data = {
       title: "Home",
       url: "#",
       icon: <Home2 size="32" />,
-      isActive: true,
       items: [],
     },
     {
@@ -83,6 +82,7 @@ const data = {
         {
           title: "Organisation Balance",
           url: "/",
+          isActive: true,
         },
         {
           title: "Personnal balance",
